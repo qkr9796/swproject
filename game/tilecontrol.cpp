@@ -4,7 +4,7 @@
 using namespace std;
 
 
-tileControl::tileControl(QObject *parent)
+TileControl::TileControl(QObject *parent)
     : QObject{parent}
 {
     tileStruct tilestruct;
@@ -42,16 +42,16 @@ tileControl::tileControl(QObject *parent)
 
 }
 
-tileControl::~tileControl(){
+TileControl::~TileControl(){
 
 }
 
-QList<tileStruct> tileControl::tileCreate(){
+QList<tileStruct> TileControl::tileCreate(){
     tileShuffle();
     return tiles;
 }
 
-QList<tileStruct> tileControl::tileProcess(QVariantMap param){
+QList<tileStruct> TileControl::tileProcess(QVariantMap param){
     for(int i = 0; i < tiles.length(); i++){
         tiles[i].visualIndex = param[QString::number(i)].toMap()["visualIndex"].toInt();
         tileVisualIndex[tiles[i].visualIndex/8][tiles[i].visualIndex%8] = i;
@@ -98,7 +98,7 @@ QList<tileStruct> tileControl::tileProcess(QVariantMap param){
     return tiles;
 }
 
-QList<tileStruct> tileControl::tileShuffle(){
+QList<tileStruct> TileControl::tileShuffle(){
     tiles.clear();
     tileStruct tilestruct;
     QColor colors[4] = {QColor("blue"), QColor("green"), QColor("yellow"), QColor("red")};
@@ -112,7 +112,7 @@ QList<tileStruct> tileControl::tileShuffle(){
     return tiles;
 }
 
-void tileControl::calcRemoveTable(){
+void TileControl::calcRemoveTable(){
 
     //cout<<"calcremovetable"<<endl;
 

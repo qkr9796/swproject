@@ -1,11 +1,17 @@
 import QtQuick
 import QtQuick.Layouts
 
+import TileControl 1.0
+
 Rectangle {
     id: gamePage
     anchors.fill: parent
 
     signal gameEnd()
+
+    TileControl{
+        id: tileControl
+    }
 
     Rectangle{
         id: upperArea

@@ -23,6 +23,7 @@ qt_add_qml_module(appswproject
     QML_FILES
     SOURCES game/tilecontrol.h game/tilecontrol.cpp
     QML_FILES game/Effect.qml
+    SOURCES connection/client.h connection/client.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

@@ -19,7 +19,7 @@ public:
     Q_PROPERTY(QColor color MEMBER color)
 };
 
-class tileControl : public QObject
+class TileControl : public QObject
 {
     Q_OBJECT
 
@@ -37,8 +37,8 @@ private:
 
 
 public:
-    explicit tileControl(QObject *parent = nullptr);
-    ~tileControl();
+    explicit TileControl(QObject *parent = nullptr);
+    ~TileControl();
 
     Q_INVOKABLE QList<tileStruct> tileProcess(QVariantMap param);
     Q_INVOKABLE QList<tileStruct> tileCreate();
