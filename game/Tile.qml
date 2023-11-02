@@ -35,13 +35,6 @@ Rectangle {
     Drag.hotSpot.y: height / 2
 /*
     Text {
-        text: tile.visualIndex
-        //text: tile.sourceParent
-        color: "#000000"
-        anchors.centerIn: parent
-    }
-
-    Text {
         text: tile.tileIndex
         color: "#000000"
         anchors.bottom: parent.bottom
@@ -65,8 +58,6 @@ Rectangle {
         }
     }
 
-
-
     MouseArea {
         id: dragArea
         anchors.fill: parent
@@ -88,13 +79,14 @@ Rectangle {
             //tile.anchors.centerIn = undefined
             //tile.parent.z = 99
             tile.z = 99
+            dragTimer.tile = tile
+            dragTimer.num = 4
+            dragTimer.start()
 
             //dragArea.drag.minimumX = tile.mapFromItem(tile.dragParent, 0, 0).x + 5
             //dragArea.drag.maximumX = tile.mapFromItem(tile.dragParent, 0, 0).x + tile.dragParent.width - tile.width + 5
             //dragArea.drag.minimumY = tile.mapFromItem(tile.dragParent, 0, 0).y + 5
             //dragArea.drag.maximumY = tile.mapFromItem(tile.dragParent, 0, 0).y + tile.dragParent.height - tile.height + 5
-
-
         }
 
         onReleased: function() {
@@ -102,6 +94,8 @@ Rectangle {
             //tile.sourceParent = gameView.currIndex
             //tile.parent = tileRoot.itemAt(sourceParent)
             //tile.anchors.centerIn = tile.parent
+            dragTimer.stop();
+
             tile.x = gameView.xs[visualIndex]
             tile.y = gameView.ys[visualIndex]
             tile.border.width = 0

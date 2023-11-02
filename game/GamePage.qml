@@ -43,10 +43,21 @@ Rectangle {
                 Text {
                     color: "#000000"
                     text: "0"
+                    font.pointSize: 24
                 }
             }
         }
+
+        Text{
+            text: dragTimer.num
+            color: "#000000"
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom : parent.bottom
+            anchors.bottomMargin: 10
+            font.pointSize: 24
+        }
     }
+
 
     Rectangle{
         id: gameView
@@ -145,7 +156,6 @@ Rectangle {
                     }
                 }
             }
-
         }
 
         function delay(time, func){
@@ -278,5 +288,22 @@ Rectangle {
             gameView.update()
             delay(60, gameView.process)
         }
+
+        Timer {
+            id: dragTimer
+            interval: 1000
+            repeat: true
+            property Tile tile
+            property int num
+
+            onTriggered: function(){
+                dragTimer.num -= 1
+                if(dragTimer.num <= 0){
+                    dragTimer.tile.Drag.cancel()
+                    dragTimer.stop()
+                }
+            }
+        }
+
     }
 }
